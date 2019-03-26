@@ -1,16 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Items>
-  <Item 
+	<Item 
 		Name="Sten"
 		Description="Test Description 1"
 		Value="1"
 		ItemRarity="0">
-  </Item>
+	</Item>
 
-  <Item 
+	<Item 
 		Name="Træ"
 		Description="Test Description 2"
 		Value="10"
 		ItemRarity="1">
-  </Item>
+	</Item>
+	<Weapon
+		Name="Sword of All Justice"
+		Description="It's a sword"
+		Value="10000"
+		ItemRarity="3"
+		Damage="15">
+	</Weapon>
+	<Weapon
+		Name="The Boner"
+		Description="It's a phallic sword"
+		Value="100"
+		ItemRarity="2"
+		Damage="69">
+	</Weapon>
 </Items>

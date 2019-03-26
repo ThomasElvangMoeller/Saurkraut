@@ -53,11 +53,11 @@ public class Item : IComparable<Item> {
         XmlDocument doc = new XmlDocument();
         doc.LoadXml(xmlValue);
 
-        XmlNodeList nodeList = doc.DocumentElement.SelectNodes("/Items/Item");
+        XmlNodeList nodeListItem = doc.DocumentElement.SelectNodes("/Items/Item");
 
         List<Item> readItems = new List<Item>();
 
-        foreach (XmlNode node in nodeList) {
+        foreach (XmlNode node in nodeListItem) {
             
             string desc = node.Attributes["Description"].Value;
             string name = node.Attributes["Name"].Value;
@@ -66,6 +66,19 @@ public class Item : IComparable<Item> {
 
             readItems.Add(new Item(name, desc, value, itemRarity));
         }
+
+        XmlNodeList nodeListWeapons = doc.DocumentElement.SelectNodes("/Items/Weapon");
+
+        foreach (XmlNode node in nodeListWeapons) {
+            string desc = node.Attributes["Description"].Value;
+            string name = node.Attributes["Name"].Value;
+            int value = int.Parse(node.Attributes["Value"].Value);
+            ItemRarity itemRarity = (ItemRarity)int.Parse(node.Attributes["ItemRarity"].Value);
+            int damage = int.Parse(node.Attributes["Damage"].Value);
+
+            readItems.Add(new Weapon(name, desc, value, itemRarity, damage));
+        }
+
 
         return readItems;
     }
@@ -89,6 +102,9 @@ public class Weapon : Item, IComparable<Weapon> {
         }
     }
 
+    public override string ToString() {
+        return base.ToString()+ " Damage: "+Damage;
+    }
 }
 
 
