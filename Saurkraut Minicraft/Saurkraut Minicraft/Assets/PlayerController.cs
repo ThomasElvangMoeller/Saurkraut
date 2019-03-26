@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float Speed = 3.0f;
-    public int facingDirection;
+    public int faceDirection;
     private Rigidbody2D rg2D;
 
     // Start is called before the first frame update
@@ -30,13 +30,35 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void FlipOnVertival()
+    public void FlipOnVertival(float horizontal, float vertical)
     {
+        if(vertical > 0)
+        {
+            faceDirection = 0;
+        }
+        else if (vertical < 0)
+        {
+            faceDirection = 2;
+        }
+        else if (horizontal > 0)
+        {
+            faceDirection = 1;
+        }
+        else
+        {
+            faceDirection = 3;
+        }
 
+        //Vector3 theScale = transform.localScale;
+        //transform.localScale = theScale;
     }
 
     public void FlipOnHorizontal()
     {
 
+
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 }
