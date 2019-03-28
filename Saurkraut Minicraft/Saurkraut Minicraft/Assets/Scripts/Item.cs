@@ -11,7 +11,6 @@ public class Item : IComparable<Item> {
     public string Name { get; }
     public string Description { get; }
 
-    public static string DEFAULT_XML_PLACEMENT = ".\\Items.xml";
 
     public static Item DummyItem = new Item("Dummy Name", "Dummy Description", 0, ItemRarity.Common);
 
@@ -36,7 +35,7 @@ public class Item : IComparable<Item> {
 
 
     public static List<Item> ReadXML() {
-        return ReadXML(DEFAULT_XML_PLACEMENT);
+        return ReadXML(GameController.Config.DEFAULT_ITEM_XML_PLACEMENT);
     }
 
     public static List<Item> ReadXML(string xmlPath) {
