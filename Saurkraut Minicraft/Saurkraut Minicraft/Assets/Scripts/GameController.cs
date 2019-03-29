@@ -21,11 +21,19 @@ public class GameController : MonoBehaviour {
 
 
 
-
+    /// <summary>
+    /// Saves the given list, using the default player inventory file placement
+    /// </summary>
+    /// <param name="items"></param>
     public static void SavePlayerInventory(List<Item> items) {
         SavePlayerInventory(items, Config.DEFAULT_PLAYER_INV_SAVE_PLACEMENT);
     }
 
+    /// <summary>
+    /// Saves the given list, using the given player inventory file placement
+    /// </summary>
+    /// <param name="items"></param>
+    /// <param name="place"></param>
     public static void SavePlayerInventory(List<Item> items, string place) {
 
         BinaryFormatter formatter = new BinaryFormatter();

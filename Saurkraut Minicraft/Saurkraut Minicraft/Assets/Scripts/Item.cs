@@ -40,6 +40,10 @@ public class Item : IComparable<Item> {
         }
     }
 
+    protected Sprite GetItemImageAsSprite() {
+        return Sprite.Create(Image, new Rect(Vector2.zero, new Vector2(Image.width, Image.height)), new Vector2(Image.width/2, Image.height/2));
+    }
+
 
     public static List<Item> ReadXML() {
         return ReadXML(GameController.Config.DEFAULT_ITEM_XML_PLACEMENT);
