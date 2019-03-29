@@ -27,6 +27,12 @@ public class PlayerController : MonoBehaviour
         Movement(horizontalMovement, verticalMovement);
         HandleSprite(new Vector2(horizontalMovement, verticalMovement));
         
+        if(Input.GetKeyDown("Inventory"))
+        {
+
+        }
+
+
     }
 
     public void Movement(float horizontal, float vertical)
