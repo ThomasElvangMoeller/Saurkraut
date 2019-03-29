@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         }else if(direction.x < 0) {
             renderer.sprite = PlayerSprites[1];
             renderer.flipX = true;
-        } else {
+        } else if(direction.y < 0) {
             renderer.sprite = PlayerSprites[0];
             renderer.flipX = false;
         }

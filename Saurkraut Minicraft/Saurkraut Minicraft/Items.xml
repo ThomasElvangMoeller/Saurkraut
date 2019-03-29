@@ -4,20 +4,23 @@
 		Name="Sten"
 		Description="Test Description 1"
 		Value="1"
-		ItemRarity="0">
+		ItemRarity="0"
+		ImageName="stone.png">
 	</Item>
 
 	<Item 
 		Name="Træ"
 		Description="Test Description 2"
 		Value="10"
-		ItemRarity="1">
+		ItemRarity="1"
+		ImageName="log.png">
 	</Item>
 	<Weapon
 		Name="Sword of All Justice"
 		Description="It's a sword"
 		Value="10000"
 		ItemRarity="3"
+		ImageName="sword1.png"
 		Damage="15">
 	</Weapon>
 	<Weapon
@@ -25,6 +28,7 @@
 		Description="It's a phallic sword"
 		Value="100"
 		ItemRarity="2"
+		ImageName="sword2.png"
 		Damage="69">
 	</Weapon>
 </Items>
