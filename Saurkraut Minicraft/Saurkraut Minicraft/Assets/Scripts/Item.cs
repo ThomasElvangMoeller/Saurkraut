@@ -17,7 +17,14 @@ public class Item : IComparable<Item> {
     public Texture2D Image { get; }
 
 
-
+    /// <summary>
+    /// Creates an Item, the parameter image is the name of the image file .png is preferred for this
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="description"></param>
+    /// <param name="value"></param>
+    /// <param name="itemRarity"></param>
+    /// <param name="image"></param>
     public Item(string name, string description, int value, ItemRarity itemRarity, string image) {
         this.Name = name;
         this.Description = description;
@@ -39,19 +46,29 @@ public class Item : IComparable<Item> {
         }
     }
 
+    /// <summary>
+    /// returns a the item image as a sprite
+    /// </summary>
+    /// <returns></returns>
     protected Sprite GetItemImageAsSprite() {
-        return Sprite.Create(Image, new Rect(Vector2.zero, new Vector2(Image.width, Image.height)), new Vector2(Image.width/2, Image.height/2));
+        return Sprite.Create(Image, new Rect(Vector2.zero, new Vector2(Image.width, Image.height)), new Vector2(.5f, .5f));
     }
 
-
+    /// <summary>
+    /// Reads the default item xml file placement and creates a List of CraftingRecipes using
+    /// </summary>
+    /// <returns></returns>
     public static List<Item> ReadXML() {
         return ReadXML(GameController.Config.DEFAULT_ITEM_XML_PLACEMENT);
     }
 
+    /// <summary>
+    /// Reads the given item xml file placement and creates a List of CraftingRecipes using
+    /// </summary>
+    /// <returns></returns>
     public static List<Item> ReadXML(string xmlPath) {
 
         string xmlValue = "";
-
 
         using (var file = new StreamReader(xmlPath)) {
             xmlValue = file.ReadToEnd();
@@ -93,7 +110,11 @@ public class Item : IComparable<Item> {
 
         return readItems;
     }
-
+    /// <summary>
+    /// returns a Texture2D from the given fileplacement, has no error handling
+    /// </summary>
+    /// <param name="imagePlace"></param>
+    /// <returns></returns>
     protected Texture2D GetTexture(string imagePlace) {
         Texture2D texture = new Texture2D(16,16,TextureFormat.RGBA32, false);
 

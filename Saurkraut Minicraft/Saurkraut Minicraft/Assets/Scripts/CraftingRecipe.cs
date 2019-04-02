@@ -19,7 +19,11 @@ public class CraftingRecipe {
         this.Input = input;
         this.Output = new List<ItemStack> { new ItemStack(output, 1) };
     }
-
+    /// <summary>
+    /// returns true if the chosen recipe can be crafted given the items in the inventory list
+    /// </summary>
+    /// <param name="inventory"></param>
+    /// <returns></returns>
     public bool CraftingPossible(List<ItemStack> inventory) {
         return HasRoom() && ContainsAllItems(inventory);
     }
@@ -40,7 +44,10 @@ public class CraftingRecipe {
     }
 
     
-
+    /// <summary>
+    /// Changes the given inventory to remove the needed items and add the output of the recipe
+    /// </summary>
+    /// <param name="inventory"></param>
     public void Craft(ref List<ItemStack> inventory) {
         if (CraftingPossible(inventory)) {
             foreach (ItemStack item in Input) {
@@ -55,11 +62,18 @@ public class CraftingRecipe {
             }
         }
     }
-
+    /// <summary>
+    /// Reads the default crafting recipe xml file placement and creates a List of CraftingRecipes using
+    /// </summary>
+    /// <returns></returns>
     public static List<CraftingRecipe> ReadXML() {
         return ReadXML(GameController.Config.DEFAULT_CRAFTING_RECIPES_XML_PLACEMENT);
     }
 
+    /// <summary>
+    /// Reads the given crafting recipe xml file placement and creates a List of CraftingRecipes
+    /// </summary>
+    /// <returns></returns>
     public static List<CraftingRecipe> ReadXML(string xmlPath) {
 
         string xmlValue = "";
