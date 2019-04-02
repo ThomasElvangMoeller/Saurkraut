@@ -1,21 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Items>
-	<Item 
-		Name="Sten"
+	<Item xml:space="preserve"
+		Name="Stone"
 		Description="Test Description 1"
 		Value="1"
 		ItemRarity="0"
 		ImageName="stone.png">
 	</Item>
-
-	<Item 
-		Name="Træ"
-		Description="Test Description 2"
-		Value="10"
-		ItemRarity="1"
+	<Item xml:space="preserve"
+		Name="Sharp Stone"
+		Description="Common Material refined from Stones"
+		Value="2"
+		ItemRarity="0"
+		ImageName="sharp_stone.png">
+	</Item>
+	<Item xml:space="preserve"
+		Name="Oak Log"
+		Description="Natural Resource"
+		Value="4"
+		ItemRarity="0"
 		ImageName="log.png">
 	</Item>
-	<Weapon
+	<Item xml:space="preserve"
+		Name="Oak Plank"
+		Description="Common Material refined from oak logs"
+		Value="8"
+		ItemRarity="0"
+		ImageName="plank.png">
+	</Item>
+	<Item xml:space="preserve"
+		Name="Stick"
+		Description="Common Material refined from wood"
+		Value="2"
+		ItemRarity="0"
+		ImageName="stick.png">
+	</Item>
+	<Weapon xml:space="preserve"
 		Name="Sword of All Justice"
 		Description="It's a sword"
 		Value="10000"
@@ -23,7 +43,7 @@
 		ImageName="sword1.png"
 		Damage="15">
 	</Weapon>
-	<Weapon
+	<Weapon xml:space="preserve"
 		Name="The Boner"
 		Description="It's a phallic sword"
 		Value="100"

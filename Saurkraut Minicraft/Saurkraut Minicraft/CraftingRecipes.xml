@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Recipes>
+  <Recipe>
+    <Input xml:space="preserve" Amount="2">Stone</Input>
+    <Output xml:space="preserve" Amount="5">Sharp Stone</Output>
+  </Recipe>
+  <Recipe>
+    <Input xml:space="preserve" Amount="2">Sharp Stone</Input>
+    <Input xml:space="preserve" Amount="1">Oak Log</Input>
+    <Output xml:space="preserve" Amount="10">Oak Plank</Output>
+  </Recipe>
+  <Recipe>
+    <Input xml:space="preserve" Amount="1">Sharp Stone</Input>
+    <Input xml:space="preserve" Amount="1">Oak Plank</Input>
+    <Output xml:space="preserve" Amount="5">Stick</Output>
+  </Recipe>
+  <Recipe>
+    <Input xml:space="preserve" Amount="4">Sharp Stone</Input>
+    <Input xml:space="preserve" Amount="2">Stick</Input>
+    <Output xml:space="preserve" Amount="1">The Boner</Output>
+  </Recipe>
+
+</Recipes>

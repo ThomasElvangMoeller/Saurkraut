@@ -17,7 +17,6 @@ public class Item : IComparable<Item> {
     public Texture2D Image { get; }
 
 
-    public static Item DummyItem = new Item("Dummy Name", "Dummy Description", 0, ItemRarity.Common, "log.png");
 
     public Item(string name, string description, int value, ItemRarity itemRarity, string image) {
         this.Name = name;
@@ -25,7 +24,7 @@ public class Item : IComparable<Item> {
         this.Value = value;
         this.Rarity = itemRarity;
         this.ImageName = image;
-        this.Image = getTexture(GameController.Config.DEFAULT_ITEM_TEXTURE_FOLDER_PLACEMENT + image);
+        this.Image = GetTexture(GameController.Config.DEFAULT_ITEM_TEXTURE_FOLDER_PLACEMENT + image);
     }
 
     public override string ToString() {
@@ -95,7 +94,7 @@ public class Item : IComparable<Item> {
         return readItems;
     }
 
-    protected Texture2D getTexture(string imagePlace) {
+    protected Texture2D GetTexture(string imagePlace) {
         Texture2D texture = new Texture2D(16,16,TextureFormat.RGBA32, false);
 
         MemoryStream stream = new MemoryStream();

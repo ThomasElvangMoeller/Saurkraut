@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 
-public class ItemStack : MonoBehaviour {
+public class ItemStack {
 
-    [HideInInspector]
     public Item item { get; }
-    [HideInInspector]
     public int itemAmount { get; set; }
 
     public ItemStack(Item item, int amount) {

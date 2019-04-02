@@ -6,19 +6,36 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public static List<Item> AvailableItems;
+    public static List<CraftingRecipe> AvailableCraftingRecipes;
 
 
     public struct Config {
+        public static int DEFAULT_PLAYER_INVENTORY_SIZE = 24;
         public static string DEFAULT_ITEM_XML_PLACEMENT = ".\\Items.xml";
+        public static string DEFAULT_CRAFTING_RECIPES_XML_PLACEMENT = ".\\CraftingRecipes.xml";
         public static string DEFAULT_PLAYER_INV_SAVE_PLACEMENT = ".\\Inventory.dat";
         public static string DEFAULT_ITEM_TEXTURE_FOLDER_PLACEMENT = ".\\ItemsTextures\\";
     }
 
 
     void Start() {
+        //Available items MUST be instantiated before crafting recipes as it is dependent on AvailableItems
         AvailableItems = Item.ReadXML();
+        AvailableCraftingRecipes = CraftingRecipe.ReadXML();
+
+        foreach (var item in AvailableCraftingRecipes) {
+            print(item);
+        }
     }
 
+    public static Item GetItem(string name) {
+        foreach (Item item in AvailableItems) {
+            if (item.Name == name) {
+                return item;
+            }
+        }
+        return null;
+    }
 
 
     /// <summary>
@@ -87,4 +104,12 @@ public class GameController : MonoBehaviour {
 
         items = formatter.Deserialize(stream) as List<Item>;
     }
+
+
+
+
+
+
+
+
 }
