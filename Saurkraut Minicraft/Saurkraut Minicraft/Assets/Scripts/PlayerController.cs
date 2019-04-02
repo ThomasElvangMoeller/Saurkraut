@@ -10,30 +10,32 @@ public class PlayerController : MonoBehaviour
     public Sprite[] PlayerSprites = new Sprite[3];
 
     private Rigidbody2D rg2D;
-    private SpriteRenderer renderer;
+    private SpriteRenderer mRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         rg2D = GetComponent<Rigidbody2D>();
-        renderer = GetComponent<SpriteRenderer>();
+       mRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        // Movement and facing direction
         float horizontalMovement = Input.GetAxis("Horizontal");
         float verticalMovement = Input.GetAxis("Vertical");
         Movement(horizontalMovement, verticalMovement);
         HandleSprite(new Vector2(horizontalMovement, verticalMovement));
         
-        if(Input.GetKeyDown("Inventory"))
-        {
+        // Inventory
+        //if(Input.GetKeyDown("Inventory"))
+        //{
 
-        }
-
+        //}
 
     }
+
 
     public void Movement(float horizontal, float vertical)
     {
@@ -44,17 +46,17 @@ public class PlayerController : MonoBehaviour
 
     public void HandleSprite(Vector2 direction) {
         if(direction.y > 0) {
-            renderer.sprite = PlayerSprites[2];
-            renderer.flipX = false;
+            mRenderer.sprite = PlayerSprites[2];
+            mRenderer.flipX = false;
         }else if(direction.x > 0) {
-            renderer.sprite = PlayerSprites[1];
-            renderer.flipX = false;
+            mRenderer.sprite = PlayerSprites[1];
+            mRenderer.flipX = false;
         }else if(direction.x < 0) {
-            renderer.sprite = PlayerSprites[1];
-            renderer.flipX = true;
+            mRenderer.sprite = PlayerSprites[1];
+            mRenderer.flipX = true;
         } else if(direction.y < 0) {
-            renderer.sprite = PlayerSprites[0];
-            renderer.flipX = false;
+            mRenderer.sprite = PlayerSprites[0];
+            mRenderer.flipX = false;
         }
     }
 
