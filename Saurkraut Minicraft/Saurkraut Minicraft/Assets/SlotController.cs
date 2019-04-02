@@ -1,23 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class SlotController : MonoBehaviour
+public class SlotController : MonoBehaviour, IDropHandler
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public GameObject item {
+        get {
+            if(transform.childCount > 0) {
+                return transform.GetChild(0).gameObject;
+            } else
+            {
+                return null;
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnDrop(PointerEventData eventData)
     {
-        
-    }
-
-    void OnMouseEnter()
-    {
-        transform.parent.GetComponent<inventoryController>().selectedSlot = this.transform;
+        if(!item)
+        {
+            SlotedItemController.itemBeingDragged.transform.SetParent(transform);
+        }
     }
 }

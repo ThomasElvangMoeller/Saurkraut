@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rg2D;
     private SpriteRenderer mRenderer;
+    private bool showingInventory = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,10 +30,18 @@ public class PlayerController : MonoBehaviour
         HandleSprite(new Vector2(horizontalMovement, verticalMovement));
         
         // Inventory
-        //if(Input.GetKeyDown("Inventory"))
-        //{
-
-        //}
+        if(Input.GetButtonDown("Inventory"))
+        {
+            if(showingInventory == false)
+            {
+                Application.LoadLevelAdditive(0);
+                showingInventory = true;
+            } else
+            {
+                Application.UnloadLevel(0);
+                showingInventory = false;
+            }
+        }
 
     }
 
