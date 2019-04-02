@@ -38,6 +38,24 @@ public class GameController : MonoBehaviour {
         return null;
     }
 
+    /// <summary>
+    /// Gives a list of recipes that are possible with the itemstacks in the inventory given in the parameter
+    /// </summary>
+    /// <param name="inventory"></param>
+    /// <returns></returns>
+    public static List<CraftingRecipe> PossibleRecipes(List<ItemStack> inventory) {
+
+        List<CraftingRecipe> tmp = new List<CraftingRecipe>();
+
+        if (AvailableCraftingRecipes != null) {
+            foreach (CraftingRecipe recipe in AvailableCraftingRecipes) {
+                if (recipe.CraftingPossible(inventory)) {
+                    tmp.Add(recipe);
+                }
+            }
+        }
+        return tmp;
+    }
 
     /// <summary>
     /// Saves the given list, using the default player inventory file placement

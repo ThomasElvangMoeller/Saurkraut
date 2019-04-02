@@ -21,18 +21,12 @@ public class CraftingRecipe {
     }
 
     public bool CraftingPossible(List<ItemStack> inventory) {
-        if (ContainsAllItems(inventory)) { 
-            return true;
-        } else {
-            return false;
-        }
+        return HasRoom() && ContainsAllItems(inventory);
     }
 
     private bool HasRoom() {
         return (GameController.Config.DEFAULT_PLAYER_INVENTORY_SIZE - Input.Count + Output.Count) <= GameController.Config.DEFAULT_PLAYER_INVENTORY_SIZE;
     }
-
-    
 
     private bool ContainsAllItems(List<ItemStack> inventory) {
         int count = 0;
@@ -45,9 +39,10 @@ public class CraftingRecipe {
         return count >= Input.Count;
     }
 
+    
 
     public void Craft(ref List<ItemStack> inventory) {
-        if (HasRoom() && ContainsAllItems(inventory)) {
+        if (CraftingPossible(inventory)) {
             foreach (ItemStack item in Input) {
                 if (inventory.FindFromName(item.item.Name).itemAmount > item.itemAmount) {
                     inventory.FindFromName(item.item.Name).itemAmount -= item.itemAmount;

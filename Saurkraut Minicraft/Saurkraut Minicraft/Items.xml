@@ -35,6 +35,16 @@
 		ItemRarity="0"
 		ImageName="stick.png">
 	</Item>
+	<Item xml:space="preserve"
+		Name="Iron Ingot"
+		Description="Refined high grade material"
+		Value="20"
+		ItemRarity="1"
+		ImageName="iron_ingot.png">
+	</Item>
+	
+	
+	
 	<Weapon xml:space="preserve"
 		Name="Sword of All Justice"
 		Description="It's a sword"
