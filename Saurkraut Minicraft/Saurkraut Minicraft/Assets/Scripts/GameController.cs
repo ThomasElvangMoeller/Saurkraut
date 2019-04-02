@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour {
         public static string DEFAULT_ITEM_XML_PLACEMENT = ".\\Items.xml";
         public static string DEFAULT_CRAFTING_RECIPES_XML_PLACEMENT = ".\\CraftingRecipes.xml";
         public static string DEFAULT_PLAYER_INV_SAVE_PLACEMENT = ".\\Inventory.dat";
-        public static string DEFAULT_ITEM_TEXTURE_FOLDER_PLACEMENT = ".\\ItemsTextures\\";
+        public static string DEFAULT_ITEM_TEXTURE_FOLDER_PLACEMENT = ".\\Assets\\Sprites\\ItemsTextures\\";
     }
 
 

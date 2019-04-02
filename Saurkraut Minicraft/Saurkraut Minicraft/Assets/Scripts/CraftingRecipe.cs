@@ -88,7 +88,6 @@ public class CraftingRecipe {
             XmlNodeList recipeInput = node.SelectNodes("/Recipes/Recipe/Input");
 
             foreach (XmlNode itemInput in recipeInput) {
-
                 Item that = GameController.GetItem(itemInput.InnerText);
                 int amount = int.Parse(itemInput.Attributes["Amount"].Value);
                 if (that != null) {
