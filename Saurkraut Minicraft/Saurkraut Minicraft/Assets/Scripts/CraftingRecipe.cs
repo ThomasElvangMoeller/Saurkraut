@@ -4,7 +4,6 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
-using UnityEngine.WSA;
 
 public class CraftingRecipe {
 
@@ -86,7 +85,8 @@ public class CraftingRecipe {
         foreach (XmlNode node in nodeListItem) {
 
             List<ItemStack> input = new List<ItemStack>();
-            XmlNodeList recipeInput = node.SelectNodes("/Input");
+            XmlNodeList recipeInput = node.SelectNodes("/Recipes/Recipe/Input");
+
             foreach (XmlNode itemInput in recipeInput) {
 
                 Item that = GameController.GetItem(itemInput.InnerText);
@@ -97,8 +97,9 @@ public class CraftingRecipe {
             }
 
             List<ItemStack> output = new List<ItemStack>();
-            XmlNodeList recipeOutput = node.SelectNodes("/Output");
-            foreach (XmlNode itemOutput in recipeInput) {
+            XmlNodeList recipeOutput = node.SelectNodes("/Recipes/Recipe/Output");
+
+            foreach (XmlNode itemOutput in recipeOutput) {
                 Item that = GameController.GetItem(itemOutput.InnerText);
                 int amount = int.Parse(itemOutput.Attributes["Amount"].Value);
                 if (that != null) {
@@ -107,8 +108,6 @@ public class CraftingRecipe {
             }
 
             readRecipes.Add(new CraftingRecipe(input, output));
-            
-
         }
 
         return readRecipes;
@@ -119,13 +118,15 @@ public class CraftingRecipe {
         StringBuilder sb = new StringBuilder("Input: ");
 
         foreach (var item in Input) {
-            sb.Append(item.item + " (" + item.itemAmount + ") ");
+            sb.Append($"{item.item.Name} ({item.itemAmount}) ");
         }
         sb.Append("Output: ");
 
         foreach (var item in Output) {
             sb.Append(item.item + " (" + item.itemAmount + ") ");
         }
+
+        sb.Append($"(in: {Input.Count}, out: {Output.Count})");
 
         return sb.ToString();
     }

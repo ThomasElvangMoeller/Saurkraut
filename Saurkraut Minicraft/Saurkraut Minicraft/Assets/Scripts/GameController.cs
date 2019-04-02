@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour {
         foreach (var item in AvailableCraftingRecipes) {
             print(item);
         }
+        print(AvailableCraftingRecipes.Count);
     }
 
     public static Item GetItem(string name) {
