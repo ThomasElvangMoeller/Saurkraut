@@ -3,6 +3,11 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
+/// <summary>
+/// <para>GameController must be one of the first scripts that has its Start() called, as it loads the neccesary resources from the disk.</para>
+/// <para>This is done in Edit -> Project Settings -> Script Execution Order. </para>
+/// <para>Add GameController to the list and move it to before defaults </para>
+/// </summary>
 public class GameController : MonoBehaviour {
 
     public static List<Item> AvailableItems;

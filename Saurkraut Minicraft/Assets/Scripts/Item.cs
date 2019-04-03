@@ -35,7 +35,7 @@ public class Item : IComparable<Item> {
     }
 
     public override string ToString() {
-        return $"Name: {Name} Value: {Value} Rarity: {Rarity} {Description}";
+        return $"Name: {Name}, Value: {Value}, Rarity: {Rarity}, {Description}";
     }
 
     public int CompareTo(Item other) {
@@ -157,7 +157,7 @@ public class Weapon : Item, IComparable<Weapon> {
     }
 
     public override string ToString() {
-        return base.ToString()+ " Damage: "+Damage;
+        return base.ToString()+ ", Damage: "+Damage;
     }
 }
 

@@ -309,5 +309,26 @@ PrefabInstance:
       propertyPath: PlayerSprites.Array.size
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 978254676308301351, guid: e61f56926af7ab0488471729bf5eeec6,
+        type: 3}
+      propertyPath: Speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 978254676308301350, guid: e61f56926af7ab0488471729bf5eeec6,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -739645877
+      objectReference: {fileID: 0}
+    - target: {fileID: 978254676308301350, guid: e61f56926af7ab0488471729bf5eeec6,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 978254676308301350, guid: e61f56926af7ab0488471729bf5eeec6,
+        type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 978254676308301349, guid: e61f56926af7ab0488471729bf5eeec6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e61f56926af7ab0488471729bf5eeec6, type: 3}
