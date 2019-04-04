@@ -27,11 +27,12 @@ public class GameController : MonoBehaviour {
         //Available items MUST be instantiated before crafting recipes as it is dependent on AvailableItems
         AvailableItems = Item.ReadXML();
         AvailableCraftingRecipes = CraftingRecipe.ReadXML();
-
+        /*
         foreach (var item in AvailableCraftingRecipes) {
             print(item);
         }
         print(AvailableCraftingRecipes.Count);
+        */
     }
 
     public static Item GetItem(string name) {
@@ -66,7 +67,7 @@ public class GameController : MonoBehaviour {
     /// Saves the given list, using the default player inventory file placement
     /// </summary>
     /// <param name="items"></param>
-    public static void SavePlayerInventory(List<Item> items) {
+    public static void SavePlayerInventory(List<ItemStack> items) {
         SavePlayerInventory(items, Config.DEFAULT_PLAYER_INV_SAVE_PLACEMENT);
     }
 
@@ -75,7 +76,7 @@ public class GameController : MonoBehaviour {
     /// </summary>
     /// <param name="items"></param>
     /// <param name="place"></param>
-    public static void SavePlayerInventory(List<Item> items, string place) {
+    public static void SavePlayerInventory(List<ItemStack> items, string place) {
 
         BinaryFormatter formatter = new BinaryFormatter();
         MemoryStream stream = new MemoryStream();
@@ -95,7 +96,7 @@ public class GameController : MonoBehaviour {
     /// Takes in and fills the given list, using the default player inventory file placement
     /// </summary>
     /// <param name="items"></param>
-    public static void LoadPlayerInventory(out List<Item> items) {
+    public static void LoadPlayerInventory(out List<ItemStack> items) {
         LoadPlayerInventory(out items, Config.DEFAULT_PLAYER_INV_SAVE_PLACEMENT);
     }
 
@@ -105,7 +106,7 @@ public class GameController : MonoBehaviour {
     /// </summary>
     /// <param name="items"></param>
     /// <param name="place"></param>
-    public static void LoadPlayerInventory(out List<Item> items, string place) {
+    public static void LoadPlayerInventory(out List<ItemStack> items, string place) {
 
         BinaryFormatter formatter = new BinaryFormatter();
         MemoryStream stream = new MemoryStream();
@@ -126,14 +127,6 @@ public class GameController : MonoBehaviour {
         stream.Write(invBuffer, 0, invBuffer.Length);
         stream.Position = 0;
 
-        items = formatter.Deserialize(stream) as List<Item>;
+        items = formatter.Deserialize(stream) as List<ItemStack>;
     }
-
-
-
-
-
-
-
-
 }

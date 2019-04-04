@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
         InteractionPoint.parent = transform;
         InteractionPoint.position = new Vector2(0, -.2f);
         InteractionPoint.name = "InteractionPoint";
+
+        Filter2D.layerMask = LayerMask.GetMask("Nature");
     }
 
     // Update is called once per frame
@@ -33,9 +35,12 @@ public class PlayerController : MonoBehaviour
         // Movement and facing direction
         float horizontalMovement = Input.GetAxis("Horizontal");
         float verticalMovement = Input.GetAxis("Vertical");
+
+        Vector2 dir = new Vector2(horizontalMovement, verticalMovement);
+
         Movement(horizontalMovement, verticalMovement);
-        HandleSprite(new Vector2(horizontalMovement, verticalMovement));
-        HandleInterActionPoint(new Vector2(horizontalMovement, verticalMovement));
+        HandleSprite(dir);
+        HandleInteractionPoint(dir);
         
         // Inventory
         if(Input.GetButtonDown("Inventory"))
@@ -52,6 +57,11 @@ public class PlayerController : MonoBehaviour
                 Application.UnloadLevel(0);
                 showingInventory = false;
             }
+        }
+
+        // Interact
+        if (Input.GetButtonDown("Jump")) {
+            Interact(dir);
         }
 
     }
@@ -76,13 +86,11 @@ public class PlayerController : MonoBehaviour
     public void Movement(float horizontal, float vertical)
     {
         rg2D.velocity = new Vector2(horizontal * Speed, vertical * Speed);
-
-        
     }
 
 
 
-    public void HandleInterActionPoint(Vector2 direction) {
+    public void HandleInteractionPoint(Vector2 direction) {
 
         if (direction != oldDirection) {
 
@@ -99,14 +107,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private ContactFilter2D Filter2D = new ContactFilter2D();
+
     public void Interact(Vector2 direction) {
         RaycastHit2D[] hit2D = new RaycastHit2D[1];
-        Physics2D.CircleCast(InteractionPoint.position, 0.05f, direction,new ContactFilter2D(), hit2D);
+        Physics2D.CircleCast(InteractionPoint.position, 0.05f, direction, Filter2D, hit2D);
 
-
+        ResourcePoint resource = hit2D[0].collider.gameObject.GetComponent<ResourcePoint>();
         //TODO find måde at checke om collided har component ResourcePoint 
-        if(hit2D[0].collider.gameObject is ResourcePoint) {
-
+        if(resource != null) {
+            resource.OnHit(this);
         }
     }
 

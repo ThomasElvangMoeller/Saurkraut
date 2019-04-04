@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
+[Serializable]
 public class ItemStack {
 
     public Item item { get; }
@@ -8,5 +10,10 @@ public class ItemStack {
     public ItemStack(Item item, int amount) {
         this.item = item;
         this.itemAmount = amount;
+    }
+
+
+    public override string ToString() {
+        return item.ToString() + ", Amount: "+itemAmount;
     }
 }

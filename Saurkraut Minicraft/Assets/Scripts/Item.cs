@@ -20,7 +20,7 @@ public class Item : IComparable<Item> {
     /// <summary>
     /// Creates an Item, the parameter image is the name of the image file .png is preferred for this
     /// </summary>
-    /// <param name="name"></param>
+    /// <param name="name">The name of the bloody item, ya dingus</param>
     /// <param name="description"></param>
     /// <param name="value"></param>
     /// <param name="itemRarity"></param>
