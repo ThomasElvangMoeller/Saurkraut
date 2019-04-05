@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,15 @@ public class PlayerController : MonoBehaviour
     private List<ItemStack> Inventory = new List<ItemStack>(GameController.Config.DEFAULT_PLAYER_INVENTORY_SIZE);
     private Transform InteractionPoint;
     private Vector2 oldDirection = Vector2.zero;
+
+    public delegate void InventoryChangedEventHandler(object sender, EventArgs args);
+    public event InventoryChangedEventHandler InventoryChanged;
+
+    private void NotifyInventoryChanged() {
+        if(InventoryChanged != null) {
+            InventoryChanged(this, new EventArgs());
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +96,7 @@ public class PlayerController : MonoBehaviour
 
                 invFrom[itemToMoveIndex] = item2;
                 invTo[newItemIndex] = item1;
+                NotifyInventoryChanged();
                 return true;
             }
         }
@@ -102,6 +113,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
             Inventory.Add(itemStack);
+            NotifyInventoryChanged();
             return true;
         }
 
