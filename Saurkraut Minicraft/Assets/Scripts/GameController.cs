@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// <para>GameController must be one of the first scripts that has its Start() called, as it loads the neccesary resources from the disk.</para>

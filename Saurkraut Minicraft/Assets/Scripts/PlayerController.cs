@@ -14,12 +14,13 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rg2D;
     private SpriteRenderer mRenderer;
     private bool showingInventory = false;
-    private List<ItemStack> Inventory = new List<ItemStack>(GameController.Config.DEFAULT_PLAYER_INVENTORY_SIZE);
+    public static List<ItemStack> Inventory = new List<ItemStack>(GameController.Config.DEFAULT_PLAYER_INVENTORY_SIZE);
     private Transform InteractionPoint;
     private Vector2 oldDirection = Vector2.zero;
 
     public delegate void InventoryChangedEventHandler(object sender, EventArgs args);
     public event InventoryChangedEventHandler InventoryChanged;
+
 
     private void NotifyInventoryChanged() {
         if(InventoryChanged != null) {
