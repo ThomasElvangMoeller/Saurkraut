@@ -14,7 +14,10 @@ public class Item : IComparable<Item> {
     public string Name { get; }
     public string Description { get; }
     public string ImageName { get; }
-    public Texture2D Image { get; }
+
+    [NonSerialized]
+    private Texture2D image;
+    public Texture2D Image { get { return image; } }
 
 
     /// <summary>
@@ -31,7 +34,7 @@ public class Item : IComparable<Item> {
         this.Value = value;
         this.Rarity = itemRarity;
         this.ImageName = image;
-        this.Image = GetTexture(GameController.Config.DEFAULT_ITEM_TEXTURE_FOLDER_PLACEMENT + image);
+        this.image = GetTexture(GameController.Config.DEFAULT_ITEM_TEXTURE_FOLDER_PLACEMENT + image);
     }
 
     public override string ToString() {
@@ -135,6 +138,10 @@ public class Item : IComparable<Item> {
 
         texture.LoadImage(imageBuffer);
         return texture;
+    }
+
+    public void UpdateTexture() {
+        this.image = GetTexture(GameController.Config.DEFAULT_ITEM_TEXTURE_FOLDER_PLACEMENT + image);
     }
 
 }

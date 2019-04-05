@@ -128,5 +128,8 @@ public class GameController : MonoBehaviour {
         stream.Position = 0;
 
         items = formatter.Deserialize(stream) as List<ItemStack>;
+        foreach (var item in items) {
+            item.item.UpdateTexture();
+        }
     }
 }

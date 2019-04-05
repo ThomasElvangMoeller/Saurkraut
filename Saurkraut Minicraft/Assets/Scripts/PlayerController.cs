@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
         InteractionPoint.name = "InteractionPoint";
 
         Filter2D.layerMask = LayerMask.GetMask("Nature");
+
     }
 
     // Update is called once per frame
@@ -64,6 +65,26 @@ public class PlayerController : MonoBehaviour
             Interact(dir);
         }
 
+    }
+
+
+    public bool MoveItem(int itemToMoveIndex, int newItemIndex, List<ItemStack> inventory) {
+        return MoveItem(itemToMoveIndex, newItemIndex, inventory, inventory);
+    }
+
+    public bool MoveItem(int itemToMoveIndex, int newItemIndex, List<ItemStack> invFrom, List<ItemStack> invTo) {
+        if (itemToMoveIndex >= 0 && itemToMoveIndex < invFrom.Capacity) {
+            ItemStack item1 = invFrom[itemToMoveIndex];
+
+            if (newItemIndex >= 0 && newItemIndex < invTo.Capacity) {
+                ItemStack item2 = invTo[newItemIndex];
+
+                invFrom[itemToMoveIndex] = item2;
+                invTo[newItemIndex] = item1;
+                return true;
+            }
+        }
+        return false;
     }
 
     public bool AddToInventory(ItemStack itemStack) {

@@ -19,6 +19,7 @@ public class ResourcePoint : MonoBehaviour {
         if (hitCounter >= HitAmount) {
             ItemStack itemStack = new ItemStack(item, ResourceAmountGiven);
             player.AddToInventory(itemStack);
+            hitCounter = 0;
 
             if (DestroyOnFinalHit) {
                 Destroy(gameObject);
