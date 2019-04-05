@@ -8,6 +8,8 @@ public class SheepController : MonoBehaviour {
     private float characterVelocity = 0.2f;
 
     private Animator animator;
+    private Rigidbody2D mRigidbody;
+
     private float random;
     float rnd1;
     float rnd2;
@@ -17,6 +19,7 @@ public class SheepController : MonoBehaviour {
         latestDirectionChangeTime = 0f;
         calcuateNewMovementVector();
         animator = GetComponent<Animator>();
+        mRigidbody = GetComponent<Rigidbody2D>();
     }
 
     void calcuateNewMovementVector() {
@@ -74,7 +77,20 @@ public class SheepController : MonoBehaviour {
             animator.SetBool("WalkingUp", false);
             animator.SetBool("WalkingDown", false);
         }
+
+
     }
+
+    // Tried to make the sheep not slide on contact.
+    //void OnCollisionStay2D() {
+    //    Debug.Log("Hej");
+    //    mRigidbody.bodyType = RigidbodyType2D.Kinematic;
+
+    //}
+
+    //void OnCollisionExit2D() {
+    //    mRigidbody.bodyType = RigidbodyType2D.Dynamic;
+    //}
 }
 
 
