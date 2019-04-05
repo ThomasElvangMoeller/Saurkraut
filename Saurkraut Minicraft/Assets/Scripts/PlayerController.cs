@@ -150,11 +150,12 @@ public class PlayerController : MonoBehaviour
     public void Interact(Vector2 direction) {
         RaycastHit2D[] hit2D = new RaycastHit2D[1];
         Physics2D.CircleCast(InteractionPoint.position, 0.05f, direction, Filter2D, hit2D);
-
-        ResourcePoint resource = hit2D[0].collider.gameObject.GetComponent<ResourcePoint>();
-        //TODO find måde at checke om collided har component ResourcePoint 
-        if(resource != null) {
-            resource.OnHit(this);
+        if (hit2D[0]) {
+            ResourcePoint resource = hit2D[0].collider.gameObject.GetComponent<ResourcePoint>();
+            //TODO find måde at checke om collided har component ResourcePoint 
+            if (resource != null) {
+                resource.OnHit(this);
+            }
         }
     }
 
