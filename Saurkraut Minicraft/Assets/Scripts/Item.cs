@@ -53,7 +53,7 @@ public class Item : IComparable<Item> {
     /// returns a the item image as a sprite
     /// </summary>
     /// <returns></returns>
-    protected Sprite GetItemImageAsSprite() {
+    public Sprite GetItemImageAsSprite() {
         return Sprite.Create(Image, new Rect(Vector2.zero, new Vector2(Image.width, Image.height)), new Vector2(.5f, .5f));
     }
 
