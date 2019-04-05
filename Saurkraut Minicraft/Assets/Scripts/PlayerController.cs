@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -51,12 +52,16 @@ public class PlayerController : MonoBehaviour
             }
             if(showingInventory == false)
             {
-                Application.LoadLevelAdditive(0);
                 showingInventory = true;
+                SceneManager.LoadScene(0, LoadSceneMode.Additive);
+                //Application.LoadLevelAdditive(0);
+                
             } else
             {
-                Application.UnloadLevel(0);
                 showingInventory = false;
+                SceneManager.UnloadSceneAsync(0);
+                //Application.UnloadLevel(0);
+                
             }
         }
 
