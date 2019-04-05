@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             } else
             {
                 showingInventory = false;
-                SceneManager.UnloadSceneAsync(0);
+                SceneManager.UnloadScene(0);
                 //Application.UnloadLevel(0);
                 
             }
