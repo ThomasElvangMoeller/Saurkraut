@@ -21,7 +21,7 @@ public class Item : IComparable<Item> {
 
 
     /// <summary>
-    /// Creates an Item, the parameter image is the name of the image file .png is preferred for this
+    /// Creates an Item, the parameter image is the name of the image file, .png is preferred for this
     /// </summary>
     /// <param name="name">The name of the bloody item, ya dingus</param>
     /// <param name="description"></param>
@@ -122,24 +122,16 @@ public class Item : IComparable<Item> {
         Texture2D texture = new Texture2D(16,16,TextureFormat.RGBA32, false);
 
         MemoryStream stream = new MemoryStream();
-        int imageBufferSize = 0;
 
-        using (var file = new FileStream(imagePlace, FileMode.OpenOrCreate)) {
-            while (file.ReadByte() != -1) {
-                imageBufferSize++;
-            }
-        }
-
-        byte[] imageBuffer = new byte[imageBufferSize];
-
-        using (var file = new FileStream(imagePlace, FileMode.OpenOrCreate)) {
-            file.Read(imageBuffer, 0, imageBuffer.Length);
-        }
+        byte[] imageBuffer = File.ReadAllBytes(imagePlace);
 
         texture.LoadImage(imageBuffer);
         return texture;
     }
 
+    /// <summary>
+    /// DONT FOOKIN WORK, DONT USE
+    /// </summary>
     public void UpdateTexture() {
         this.image = GetTexture(GameController.Config.DEFAULT_ITEM_TEXTURE_FOLDER_PLACEMENT + image);
     }

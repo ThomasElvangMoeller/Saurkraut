@@ -34,6 +34,7 @@ public class GameController : MonoBehaviour {
         }
         print(AvailableCraftingRecipes.Count);
         */
+        //print(Config.DEFAULT_ITEM_TEXTURE_FOLDER_PLACEMENT + AvailableItems[0].ImageName);
     }
 
     public static Item GetItem(string name) {
@@ -111,26 +112,20 @@ public class GameController : MonoBehaviour {
 
         BinaryFormatter formatter = new BinaryFormatter();
         MemoryStream stream = new MemoryStream();
-        int invBufferSize = 0;
 
-        using (var file = new FileStream(place, FileMode.OpenOrCreate)) {
-            while(file.ReadByte() != -1) {
-                invBufferSize++;
-            }
-        }
+        byte[] invBuffer;
 
-        byte[] invBuffer = new byte[invBufferSize];
-
-        using (var file = new FileStream(place, FileMode.OpenOrCreate)) {
-            file.Read(invBuffer, 0, invBuffer.Length);
-        }
+        invBuffer = File.ReadAllBytes(place);
 
         stream.Write(invBuffer, 0, invBuffer.Length);
         stream.Position = 0;
 
         items = formatter.Deserialize(stream) as List<ItemStack>;
+
+
+
         foreach (var item in items) {
-            item.item.UpdateTexture();
+            item.item = GetItem(item.item.Name);
         }
     }
 }

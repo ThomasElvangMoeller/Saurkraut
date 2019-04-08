@@ -17,14 +17,15 @@ public class PlayerController : MonoBehaviour
     public static List<ItemStack> Inventory = new List<ItemStack>(GameController.Config.DEFAULT_PLAYER_INVENTORY_SIZE);
     private Transform InteractionPoint;
     private Vector2 oldDirection = Vector2.zero;
+    private GameObject canvas;
 
-    public delegate void InventoryChangedEventHandler(object sender, EventArgs args);
-    public event InventoryChangedEventHandler InventoryChanged;
+    public delegate void InventoryChangedEventHandler();
+    public static event InventoryChangedEventHandler InventoryChanged;
 
 
     private void NotifyInventoryChanged() {
         if(InventoryChanged != null) {
-            InventoryChanged(this, new EventArgs());
+            InventoryChanged();
         }
     }
 
@@ -33,6 +34,9 @@ public class PlayerController : MonoBehaviour
     {
         rg2D = GetComponent<Rigidbody2D>();
         mRenderer = GetComponent<SpriteRenderer>();
+        canvas = GameObject.Find("CanvasHolder");
+        canvas.SetActive(false);
+
         InteractionPoint = new GameObject().transform;
         InteractionPoint.parent = transform;
         InteractionPoint.position = new Vector2(0, -.2f);
@@ -64,13 +68,15 @@ public class PlayerController : MonoBehaviour
             if(showingInventory == false)
             {
                 showingInventory = true;
-                SceneManager.LoadScene(0, LoadSceneMode.Additive);
+                canvas.SetActive(true);
+                //SceneManager.LoadScene(0, LoadSceneMode.Additive);
                 //Application.LoadLevelAdditive(0);
                 
             } else
             {
                 showingInventory = false;
-                SceneManager.UnloadScene(0);
+                canvas.SetActive(false);
+                //SceneManager.UnloadScene(0);
                 //Application.UnloadLevel(0);
                 
             }

@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class ItemStack {
 
-    public Item item { get; }
+    public Item item { get; set; }
     public int itemAmount { get; set; }
 
     public ItemStack(Item item, int amount) {
